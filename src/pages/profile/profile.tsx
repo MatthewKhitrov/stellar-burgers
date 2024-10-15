@@ -1,12 +1,17 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from '../../services/store';
+import { getOrderList } from '../../services/Slice/orderListSlice';
 
 export const Profile: FC = () => {
   /** TODO: взять переменную из стора */
-  const user = {
-    name: '',
-    email: ''
-  };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getOrderList());
+  }, []);
+
+  const user = useSelector((state) => state.userInfo.user);
 
   const [formValue, setFormValue] = useState({
     name: user.name,
