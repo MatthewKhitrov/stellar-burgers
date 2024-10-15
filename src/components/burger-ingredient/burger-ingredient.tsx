@@ -3,12 +3,27 @@ import { useLocation } from 'react-router-dom';
 
 import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
+import { nanoid } from '@reduxjs/toolkit';
+import { TConstructorIngredient } from '@utils-types';
+import { useDispatch } from 'react-redux';
+import { addBun, addIngredient } from '../../services/Slice/constructorSlice';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
     const location = useLocation();
+    const dispatch = useDispatch();
 
-    const handleAdd = () => {};
+    const handleAdd = () => {
+      const ingredientWithId: TConstructorIngredient = {
+        ...ingredient,
+        id: nanoid()
+      };
+      if (ingredientWithId.type === 'bun') {
+        dispatch(addBun(ingredientWithId));
+      } else {
+        dispatch(addIngredient(ingredientWithId));
+      }
+    };
 
     return (
       <BurgerIngredientUI
