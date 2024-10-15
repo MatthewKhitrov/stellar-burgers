@@ -1,7 +1,5 @@
-import { Children } from 'react';
-import { RootState, useSelector } from '../../services/store';
-import { Preloader } from '../ui/preloader';
-import { Navigator, replace, useLocation } from 'react-router-dom';
+import { useSelector } from '../../services/store';
+import { useLocation } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 
 type ProtectedRouteProps = {
