@@ -5,7 +5,7 @@ import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
 import { nanoid } from '@reduxjs/toolkit';
 import { TConstructorIngredient } from '@utils-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../services/store';
 import { addBun, addIngredient } from '../../services/Slice/constructorSlice';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
