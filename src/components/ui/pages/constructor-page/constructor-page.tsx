@@ -15,6 +15,7 @@ export const ConstructorPageUI: FC<ConstructorPageUIProps> = ({
     ) : (
       <main className={styles.containerMain}>
         <h1
+          data-test='test_title_constructor'
           className={`${styles.title} text text_type_main-large mt-10 mb-5 pl-5`}
         >
           Соберите бургер

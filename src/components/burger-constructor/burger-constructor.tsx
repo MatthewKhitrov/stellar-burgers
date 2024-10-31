@@ -28,6 +28,7 @@ export const BurgerConstructor: FC = () => {
         constructorItems.bun._id
       ];
       dispatch(orderBurger(order));
+      console.log(BurgerConstructor);
     }
   };
 
