@@ -1,3 +1,12 @@
+const chooseBuns = 'Выберите булки';
+const chooseFilling = 'Выберите начинку';
+const buns = 'Булки';
+const filleng = 'Начинки';
+const sauces = 'Соусы';
+const ingredientDetails = 'Детали ингредиента';
+const exampleIngredient = 'Катлета из марсианского Бобра Летуна';
+const addButton = 'Добавить';
+
 describe('Тестирование бургерной', () => {
   // Выполнение перхватов запросов перед посещением страницы
   beforeEach(() => {
@@ -14,36 +23,36 @@ describe('Тестирование бургерной', () => {
   // Тестирование добавления ингридиентов в конструктор
   describe('Тестирование добавления ингредиентов в конструктор', () => {
     it('Добавление булок в конструктор', () => {
-      cy.get('div').contains('Выберите булки').should('exist');
-      cy.get('h3').contains('Булки').next('ul').contains('Добавить').click();
-      cy.get('div').contains('Выберите булки').should('not.exist');
+      cy.get('div').contains(chooseBuns).should('exist');
+      cy.get('h3').contains(buns).next('ul').contains(addButton).click();
+      cy.get('div').contains(chooseBuns).should('not.exist');
     });
     it('Добавление соусов в конструктор', () => {
-      cy.get('div').contains('Выберите начинку').should('exist');
-      cy.get('h3').contains('Соусы').next('ul').contains('Добавить').click();
-      cy.get('div').contains('Выберите начинку').should('not.exist');
+      cy.get('div').contains(chooseFilling).should('exist');
+      cy.get('h3').contains(sauces).next('ul').contains(addButton).click();
+      cy.get('div').contains(chooseFilling).should('not.exist');
     });
     it('Добавление начинок в конструктор', () => {
-      cy.get('div').contains('Выберите начинку').should('exist');
-      cy.get('h3').contains('Начинки').next('ul').contains('Добавить').click();
-      cy.get('div').contains('Выберите начинку').should('not.exist');
+      cy.get('div').contains(chooseFilling).should('exist');
+      cy.get('h3').contains(filleng).next('ul').contains(addButton).click();
+      cy.get('div').contains(chooseFilling).should('not.exist');
     });
   });
 
   // Тестирование открытия и закрытия модального окна
   describe('Тестирование открытия/закрытия модального окна', () => {
     beforeEach('открытие модального окна', () => {
-      cy.contains('Катлета из марсианского Бобра Летуна').click();
+      cy.contains(exampleIngredient).click();
     });
     it('Закрытие модального окна по крестику', () => {
-      cy.contains('Детали ингредиента').should('exist');
+      cy.contains(ingredientDetails).should('exist');
       cy.get(`[data-test='modal-close']`).click();
-      cy.contains('Детали ингредиента').should('not.exist');
+      cy.contains(ingredientDetails).should('not.exist');
     });
     it('Закрытие модального окна по оверлею', () => {
-      cy.contains('Детали ингредиента').should('exist');
+      cy.contains(ingredientDetails).should('exist');
       cy.get(`body`).type('{esc}');
-      cy.contains('Детали ингредиента').should('not.exist');
+      cy.contains(ingredientDetails).should('not.exist');
     });
   });
 });
@@ -64,9 +73,9 @@ describe('Тестирование сбор заказа', () => {
   it('Сбор бургера и оформление заказа', () => {
     //Сбор бургера
     cy.visit('/');
-    cy.get('h3').contains('Булки').next('ul').contains('Добавить').click();
-    cy.get('h3').contains('Начинки').next('ul').contains('Добавить').click();
-    cy.get('h3').contains('Соусы').next('ul').contains('Добавить').click();
+    cy.get('h3').contains(buns).next('ul').contains(addButton).click();
+    cy.get('h3').contains(filleng).next('ul').contains(addButton).click();
+    cy.get('h3').contains(sauces).next('ul').contains(addButton).click();
 
     // Клик по кнопке оформить
     cy.contains('Оформить заказ').click();
@@ -81,7 +90,7 @@ describe('Тестирование сбор заказа', () => {
     cy.get(`[data-test='modal-close']`).click();
 
     // Проверка пустой ли конструктор
-    cy.get('div').contains('Выберите булки').should('exist');
-    cy.get('div').contains('Выберите начинку').should('exist');
+    cy.get('div').contains(chooseBuns).should('exist');
+    cy.get('div').contains(chooseFilling).should('exist');
   });
 });

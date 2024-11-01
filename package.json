@@ -92,11 +92,13 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier ./src --write",
-    "test": "jest"
+    "test": "jest",
+    "cypress": "cypress open cache clear"
   },
   "eslintConfig": {
     "extends": [
-      "plugin:storybook/recommended"
+      "plugin:storybook/recommended",
+      "plugin:cypress/recommended"
     ]
   },
   "description": "[Макет](<https://www.figma.com/file/vIywAvqfkOIRWGOkfOnReY/React-Fullstack_-Проектные-задачи-(3-месяца)_external_link?type=design&node-id=0-1&mode=design>)",
