@@ -1,6 +1,6 @@
 import { TOrder, TOrdersData } from '@utils-types';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getFeedsApi } from '@api';
+import { getFeedsApi } from '../../utils/burger-api';
 
 // Типизация и создание начального состояния
 type TFeedState = {
@@ -10,7 +10,7 @@ type TFeedState = {
 };
 
 //начальное состояние
-const initialState: TFeedState = {
+export const initialState: TFeedState = {
   feeds: {
     orders: [],
     total: 0,

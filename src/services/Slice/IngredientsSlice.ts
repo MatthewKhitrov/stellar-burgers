@@ -15,7 +15,7 @@ export const getIngredients = createAsyncThunk(
   async () => getIngredientsApi()
 );
 //начальное состояние
-const initialState: TIngredientsState = {
+export const initialState: TIngredientsState = {
   ingredients: [],
   loading: false,
   error: null

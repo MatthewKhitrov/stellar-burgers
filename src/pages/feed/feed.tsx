@@ -24,7 +24,7 @@ export const Feed: FC = () => {
     <FeedUI
       orders={orders}
       handleGetFeeds={() => {
-        console.log(11112233);
+        //console.log(11112233);
         setRefresh(!refresh); // Изменить значение refresh для вызова useEffect снова
       }}
     />
